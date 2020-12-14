@@ -1,9 +1,14 @@
+// import { React } from "react";
 import "./App.css";
+import Header from "./Header";
 
 function App() {
-	return <div className="app">
-        <h1>Let´s build the Amazon Store clone!</h1>
-    </div>;
+	return (
+		<div className="app">
+			<Header />
+			<Home />
+		</div>
+	);
 }
 
 export default App;
