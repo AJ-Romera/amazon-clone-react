@@ -1,0 +1,13 @@
+.home__image {
+	/* In the real amazon they use a carrousel instead of an image */
+	width: 100%;
+	z-index: -1;
+	margin-bottom: -150px;
+	mask-position: bottom;
+	mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 1) 50%,
+		rgba(0, 0, 0, 0.5) 80%,
+		rgba(255, 255, 255, 0) 100%
+	);
+}
