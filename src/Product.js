@@ -1,40 +1,29 @@
 import React from "react";
 import "./Product.css";
 import StarIcon from "@material-ui/icons/Star";
-import StarHalfIcon from "@material-ui/icons/StarHalf";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
+/* import StarHalfIcon from "@material-ui/icons/StarHalf";
+import StarBorderIcon from "@material-ui/icons/StarBorder"; */
 
-function Product() {
+function Product({ id, title, image, price, rating }) {
 	return (
 		<div className="product">
 			<div className="product__info">
-				<p>The lean startup</p>
+				<p>{title}</p>
 				<p className="product__price">
 					<small>$</small>
-					<strong>19.99</strong>
+					<strong>{price}</strong>
 				</p>
 				<div className="product__rating">
-					<p>
-						<StarIcon />
-					</p>
-					<p>
-						<StarIcon />
-					</p>
-					<p>
-						<StarIcon />
-					</p>
-					<p>
-						<StarHalfIcon />
-					</p>
-					<p>
-						<StarBorderIcon />
-					</p>
+					{Array(rating)
+						.fill()
+						.map((_, i) => (
+							<p>
+								<StarIcon />
+							</p>
+						))}
 				</div>
 			</div>
-			<img
-				src="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
-				alt="Product Photograpy"
-			/>
+			<img src={image} alt="Product Photograpy" />
 			<button>Add to Basket</button>
 		</div>
 	);
