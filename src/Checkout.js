@@ -1,10 +1,24 @@
 import React from "react";
 import "./Checkout.css";
+import Subtotal from "./Subtotal";
 
 function Checkout() {
 	return (
 		<div className="checkout">
-			<h1>This is working</h1>
+			<div className="checkout__left">
+				<div>
+					<h2 className="chechout__title">Shopping Cart</h2>
+
+					{/* BasketItem */}
+					{/* BasketItem */}
+					{/* BasketItem */}
+					{/* BasketItem */}
+					{/* BasketItem */}
+				</div>
+			</div>
+			<div className="checkout__right">
+				<Subtotal />
+			</div>
 		</div>
 	);
 }

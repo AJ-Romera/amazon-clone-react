@@ -47,10 +47,10 @@ function Home() {
 				/>
 				<Product
 					id="65478374"
-					title="DualSense Wireless Controller"
+					title="DualSense Wireless Controller."
 					price={69.96}
 					rating={5}
-					image="https://images-na.ssl-images-amazon.com/images/I/61T2aBakggL._AC_SL1001_.jpg"
+					image="https://images-na.ssl-images-amazon.com/images/I/71y%2BUGuJl5L._SL1500_.jpg"
 				/>
 			</div>
 
