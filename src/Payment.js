@@ -1,12 +1,13 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useState } from "react";
-import CurrencyFormat from "react-currency-format";
-import { Link, useHistory } from "react-router-dom";
-import CheckoutProduct from "./CheckoutProduct";
+import React, { useState, useEffect } from "react";
 import "./Payment.css";
-import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./StateProvider";
+import CheckoutProduct from "./CheckoutProduct";
+import { Link, useHistory } from "react-router-dom";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import CurrencyFormat from "react-currency-format";
+import { getBasketTotal } from "./reducer";
 import axios from "./axios";
+import { db } from "./firebase";
 
 function Payment() {
 	const [{ basket, user }, dispatch] = useStateValue();
@@ -30,11 +31,14 @@ function Payment() {
 				// stripe expects the total in a currencies subunits
 				url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
 			});
-			getClientSecret(response.data.clientSecret);
+			setClientSecret(response.data.clientSecret);
 		};
 
 		getClientSecret();
 	}, [basket]);
+
+	console.log("The secret is...", clientSecret);
+	console.log("👱", user);
 
 	const handleSubmit = async (event) => {
 		// do stripe stuff
@@ -50,9 +54,23 @@ function Payment() {
 			.then(({ paymentIntent }) => {
 				// paymentIntent = payment confirmation
 
+				db.collection("users")
+					.doc(user?.uid)
+					.collection("orders")
+					.doc(paymentIntent.id)
+					.set({
+						basket: basket,
+						amount: paymentIntent.amount,
+						created: paymentIntent.created,
+					});
+
 				setSucceeded(true);
 				setError(null);
 				setProcessing(false);
+
+				dispatch({
+					type: "EMPTY_BASKET",
+				});
 
 				history.replace("/orders");
 			});
@@ -60,7 +78,7 @@ function Payment() {
 
 	const handleChange = (event) => {
 		// listen for changes in the CardElement
-		// and displau any errors as the customer types their card details
+		// and display any errors as the customer types their card details
 		setDisabled(event.empty);
 		setError(event.error ? event.error.message : "");
 	};
@@ -68,7 +86,9 @@ function Payment() {
 	return (
 		<div className="payment">
 			<div className="payment__container">
-				<h1>Checkout {<Link to="/checkout">{basket?.length} items</Link>}</h1>
+				<h1>
+					Checkout (<Link to="/checkout">{basket?.length} items</Link>)
+				</h1>
 
 				{/* Payment section - delivery address */}
 				<div className="payment__section">
