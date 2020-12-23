@@ -1,3 +1,16 @@
+# What´s this?
+
+This is an Amazon clone I did following this 12 hours guide/course:
+[https://www.youtube.com/watch?v=0kiykrN9_Ng&list=PL-J2q3Ga50oNQP__onO64kAHX_z0BdLv6](Clever Programmer Amazon Clone)
+
+# Please Notice:
+
+This project uses firebase, so there is a big problem at the end. You can deploy the frontend BUT you can´t deploy the backend unless you have a Blaze Plan (pay as you go, free until a limit is reached) or any other payment plan. I´m a humble dev, I don´t have a credit or debit card, I´m learning, I can´t get a card yet. I can´t deploy this app, but I have a solution.
+
+# Solution:
+
+I´ll be making another version of this app with an enhanced frontend and authentication system in a few days from now 12/23/2020
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
