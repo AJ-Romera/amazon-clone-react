@@ -1,7 +1,7 @@
 # What´s this?
 
 This is an Amazon clone I did following this 12 hours guide/course:
-[https://www.youtube.com/watch?v=0kiykrN9_Ng&list=PL-J2q3Ga50oNQP__onO64kAHX_z0BdLv6](Clever Programmer Amazon Clone)
+[Clever Programmer Amazon Clone](https://www.youtube.com/watch?v=0kiykrN9_Ng&list=PL-J2q3Ga50oNQP__onO64kAHX_z0BdLv6)
 
 # Please Notice:
 
